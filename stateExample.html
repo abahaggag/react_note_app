@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <!-- React -->
+    <script src="react/react-0.13.3.js"></script>
+    <script src="react/JSXTransformer-0.13.3.js"></script>
+
+    <title>React Bulletin Board</title>
+</head>
+<body>
+    <div id="react-container"></div>
+    <script type="text/jsx" >
+        var Checkbox = React.createClass({
+            getInitialState: function(){
+                return {checked: true};
+            },
+
+            handleCheck: function(){
+                this.setState({checked: !this.state.checked});
+            },
+
+            render: function(){
+                var msg;
+
+                if (this.state.checked){
+                    msg = "checked";
+                }
+                else{
+                    msg = "unchecked";
+                }
+
+                return  <div>
+                            <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked} />
+                            <p>The CheckBox is {msg}</p>
+                        </div>;
+            }
+        });
+
+        React.render(<Checkbox />, document.getElementById("react-container"));
+    </script>
+</body>
+</html>
